@@ -1,0 +1,13 @@
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over" position="end" [disableClose]="true">
+    <app-editor (cancel)="drawer.close()" *ngIf="drawer.opened"></app-editor>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <app-links-table (edit)="openEditor($event)"></app-links-table>
+
+    <button mat-fab (click)="openEditor(null)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-drawer-content>
+</mat-drawer-container>

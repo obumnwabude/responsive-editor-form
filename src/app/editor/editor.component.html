@@ -1,0 +1,54 @@
+<div container>
+  <div header>
+    <h2>{{ linksService.currentLink ? 'Manage' : 'New' }} Link</h2>
+    <button mat-mini-fab (click)="cancel.emit()" color="primary">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="linkForm">
+    <mat-form-field [floatLabel]="'always'" short>
+      <mat-label>Shortened</mat-label>
+      <span bold>sho.rt/</span>
+      <input
+        [autofocus]="true"
+        matInput
+        [formControl]="shortCtrl"
+        type="text"
+        required
+      />
+      <mat-error *ngIf="shortCtrl.invalid">{{
+        shortCtrl.hasError('pattern')
+          ? 'Only alphanumeric characters'
+          : 'Shortened is required.'
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="'always'" long>
+      <mat-label>Full URL</mat-label>
+      <input matInput [formControl]="longCtrl" type="text" required />
+      <mat-error *ngIf="longCtrl.invalid">{{
+        longCtrl.hasError('pattern')
+          ? 'Start with https://'
+          : 'Full URL is required.'
+      }}</mat-error>
+    </mat-form-field>
+
+    <div submit-button-container>
+      <button mat-raised-button (click)="saveLink()" color="primary">
+        <mat-icon>check</mat-icon>
+        <span>{{ linksService.currentLink ? 'Update' : 'Create' }}</span>
+      </button>
+      <button
+        type="button"
+        (click)="deleteLink()"
+        mat-stroked-button
+        color="warn"
+        *ngIf="linksService.currentLink"
+      >
+        <mat-icon>delete_forever</mat-icon>
+        <span>Delete</span>
+      </button>
+    </div>
+  </form>
+</div>

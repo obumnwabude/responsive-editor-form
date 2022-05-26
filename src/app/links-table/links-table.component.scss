@@ -1,0 +1,25 @@
+[table-container] {
+  width: fit-content;
+  margin: 0 auto 64px auto;
+}
+
+th.mat-header-cell {
+  font-size: 16px;
+}
+
+td.mat-cell,
+th.mat-header-cell {
+  border-color: rgba(255, 255, 255, 0.12);
+  padding-right: 24px;
+  padding-left: 24px;
+  white-space: nowrap;
+}
+
+td.mat-cell {
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+[edit-icon] {
+  margin-right: 4px;
+}

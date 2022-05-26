@@ -1,0 +1,28 @@
+<div table-container>
+  <table mat-table [dataSource]="linksService.links" class="mat-elevation-z1">
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Manage</th>
+      <td mat-cell *matCellDef="let link">
+        <button mat-button (click)="this.edit.emit(link)">
+          <mat-icon edit-icon>drive_file_rename_outlined</mat-icon>
+          <span>Edit</span>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="short" sticky>
+      <th mat-header-cell *matHeaderCellDef bold>Short</th>
+      <td mat-cell *matCellDef="let link">
+        sho.rt/<span bold>{{ link.short }}</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="long">
+      <th mat-header-cell *matHeaderCellDef bold>Long</th>
+      <td mat-cell *matCellDef="let link">
+        {{ link.long }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+</div>
